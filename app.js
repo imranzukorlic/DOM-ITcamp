@@ -72,21 +72,75 @@
 // console.log(itemsList.nextSibling);
 
 //createElement
-var newDiv = document.createElement('div')
-newDiv.className = 'Heloo'
-//create text node
-var newDivText = document.createTextNode('haloooooooooo')
-//apply text
-newDiv.appendChild(newDivText)
+// var newDiv = document.createElement('div')
+// newDiv.className = 'Heloo'
+// //create text node
+// var newDivText = document.createTextNode('haloooooooooo')
+// //apply text
+// newDiv.appendChild(newDivText)
 
-var container = document.querySelector('header .conteiner')
-var h1 = document.querySelector('header h1')
+// var container = document.querySelector('header .conteiner')
+// var h1 = document.querySelector('header h1')
 
+// console.log(newDiv);
 
-console.log(newDiv);
+// container.insertBefore(newDiv, h1)
 
-container.insertBefore(newDiv, h1)
+//EVENTS//
+// var buttons = document.getElementById('buttons').addEventListener('click', buttonClick)
 
+// function buttonClick (atribut){
+//     // console.log(1234);
+//     document.getElementById('header-title').textContent = 'Removed'
+//     document.querySelector('#main').style.backgroundColor = '#f4f4f4'
 
+//     console.log(atribut.target);
+//     console.log(atribut.target.id);
+//     var output = document.getElementById('output')
+//     output.innerHTML = '<h3>'+atribut.target.id+'</h3>'
 
+//     console.log(atribut.altKey);
+//     console.log(atribut.ctrlKey);
+//     console.log(atribut.shiftKey);
+// }
 
+// var buttons = document.getElementById('buttons')
+// buttons.addEventListener('click', runEvent )
+// buttons.addEventListener('dblclick', runEvent )
+// buttons.addEventListener('mousedown', runEvent)
+// buttons.addEventListener('mouseup', runEvent)
+
+// var box = document.getElementById('box')
+// box.addEventListener('mouseenter', runEvent)
+// box.addEventListener('mouseleave', runEvent)
+// box.addEventListener('mouseover', runEvent)
+// box.addEventListener('mouseout', runEvent)
+// box.addEventListener('mousemove', runEvent) 
+
+var itemImput = document.querySelector('input[type = "text"]')
+var form = document.querySelector('form')
+var select = document.querySelector('select')
+
+// itemImput.addEventListener('keydown', runEvent)
+// itemImput.addEventListener('focus', runEvent)
+// itemImput.addEventListener('blur', runEvent)
+
+// itemImput.addEventListener('cut', runEvent)
+// itemImput.addEventListener('paste', runEvent)
+
+// select.addEventListener('change', runEvent)
+
+form.addEventListener('submit', runEvent)
+
+function runEvent(e) {
+    e.preventDefault()//for submit
+    console.log("EVENT TYPE: "+e.type);
+    // document.body.style.display = 'none'
+
+    // console.log(e.target.value);
+    // document.getElementById('output').innerHTML = '<h3>'+e.target.value+'</h3>'
+
+    // output.innerHTML = '<h2>Mause X '+e.offsetX +'</h2>'+'<h2>Mause Y'+e.offsetY+'</h2>'
+    // box.style.backgroundColor = 'rgb('+e.offsetX+','+e.offsetY+',40)'
+    // document.body.style.backgroundColor = 'rgb('+e.offsetX+','+e.offsetY+',40)'
+}
