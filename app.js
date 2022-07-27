@@ -117,9 +117,9 @@
 // box.addEventListener('mouseout', runEvent)
 // box.addEventListener('mousemove', runEvent) 
 
-var itemImput = document.querySelector('input[type = "text"]')
-var form = document.querySelector('form')
-var select = document.querySelector('select')
+// var itemImput = document.querySelector('input[type = "text"]')
+// var form = document.querySelector('form')
+// var select = document.querySelector('select')
 
 // itemImput.addEventListener('keydown', runEvent)
 // itemImput.addEventListener('focus', runEvent)
@@ -130,11 +130,11 @@ var select = document.querySelector('select')
 
 // select.addEventListener('change', runEvent)
 
-form.addEventListener('submit', runEvent)
+// form.addEventListener('submit', runEvent)
 
-function runEvent(e) {
-    e.preventDefault()//for submit
-    console.log("EVENT TYPE: "+e.type);
+// function runEvent(e) {
+    // e.preventDefault()//for submit
+    // console.log("EVENT TYPE: "+e.type);
     // document.body.style.display = 'none'
 
     // console.log(e.target.value);
@@ -143,4 +143,56 @@ function runEvent(e) {
     // output.innerHTML = '<h2>Mause X '+e.offsetX +'</h2>'+'<h2>Mause Y'+e.offsetY+'</h2>'
     // box.style.backgroundColor = 'rgb('+e.offsetX+','+e.offsetY+',40)'
     // document.body.style.backgroundColor = 'rgb('+e.offsetX+','+e.offsetY+',40)'
+// }
+
+var form = document.getElementById('addForm')
+var listItems = document.getElementById('items')
+var filter = document.getElementById('filter')
+
+//form submit eveent//
+function addItem(event) {
+    event.preventDefault()
+
+    var newItem = document.getElementById('item').value
+    var li = document.createElement('li')
+    li.className = 'list-group-item'
+    console.log(li);
+    //add text node whit imput value//
+    li.appendChild(document.createTextNode(newItem + ' '))
+
+    var delbutton = document.createElement('button')
+    delbutton.className = 'btn btn-danger btn-sm float-right delete'
+    delbutton.appendChild(document.createTextNode('x'))
+    li.appendChild(delbutton)
+
+    listItems.appendChild(li)
 }
+form.addEventListener('submit', addItem)
+
+function remover(event) {
+
+    if (event.target.classList.contains('delete')) {
+        if (confirm('Are u sure??????')) {
+            var li = event.target.parentElement
+            listItems.removeChild(li)
+        }
+    }
+
+}
+listItems.addEventListener('click', remover)
+
+function filtring(e) {
+    //convert tu lower case
+    var text =  e.target.value.toLowerCase()
+    var itemss = listItems.getElementsByTagName('li')
+    //convent to array
+    Array.from(itemss).forEach(function (item) {
+        var itemName = item.firstChild.textContent
+        if (itemName.toLowerCase().indexOf(text) != -1) {
+            item.style.display = 'block'
+        } else{
+            item.style.display = 'none'
+        }
+    })
+}
+filter.addEventListener('keyup', filtring)
